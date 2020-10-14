@@ -14,7 +14,7 @@
         content: "{{ result.stdout[0] }}"
         dest: "backupfile/tmp"
 
-- hosts: localhost
+- hosts: localhos
   gather_facts: false
 
   tasks:
