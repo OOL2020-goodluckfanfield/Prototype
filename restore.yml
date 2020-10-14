@@ -1,0 +1,27 @@
+---
+- hosts: vyos
+  gather_facts: false
+
+  tasks:
+    - name: show configuration commands
+      vyos_command:
+        commands:
+          - cat /config/config.boot
+      register: result
+
+    - name: save to file
+      copy:
+        content: "{{ result.stdout[0] }}"
+        dest: "backupfile/local_backup"
+
+- hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: rename
+      command:
+        sh script/timestamp.sh
+
+    - name: upload
+      command:
+        sh script/upload.sh
