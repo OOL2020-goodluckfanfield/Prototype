@@ -14,14 +14,14 @@
         content: "{{ result.stdout[0] }}"
         dest: "backupfile/tmp"
 
-- hosts: localhost
-  gather_facts: false
+          #- hosts: localhost
+          #  gather_facts: false
 
-  tasks:
-    - name: rename
-      command:
-        sh script/rename.sh
+          #  tasks:
+          #    - name: rename
+          #      command:
+          #        sh script/rename.sh
 
-    - name: upload
-      command:
-        sh script/upload.sh
+          #    - name: upload
+          #      command:
+          #        sh script/upload.sh

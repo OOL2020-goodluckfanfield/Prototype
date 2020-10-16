@@ -3,25 +3,25 @@
   gather_facts: false
 
   tasks:
-    - name: show configuration commands
-      vyos_command:
-        commands:
-          - cat /config/config.boot
-      register: result
+    - name: copy
+      command:
+        cat backupfile/config.boot
+      register:
+        result
 
-    - name: save to file
+    - name: test
+      command:
+        echo "{{result.stdout}}"
+
+    - name: set boot file
       copy:
-        content: "{{ result.stdout[0] }}"
-        dest: "backupfile/local_backup"
+        content: "{{result.stdout}}"
+        dest: /home/vyos/config
+      #      vyos_command:
+      # commands:
+          #echo "{{result.stdout[]}}" > /home/vyos/config.boot
+          #    - name: change permission
+          #vyos_command:
+          #commands:
+          #chmod 755 config.boot
 
-- hosts: localhost
-  gather_facts: false
-
-  tasks:
-    - name: rename
-      command:
-        sh script/timestamp.sh
-
-    - name: upload
-      command:
-        sh script/upload.sh

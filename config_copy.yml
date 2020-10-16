@@ -1,0 +1,10 @@
+---
+- hosts: vyos
+  gather_facts: no
+
+  tasks:
+    - name: fetch boot files
+      copy:
+        src: /home/vyos/test
+        dest: ./
+        remote_src: yes
