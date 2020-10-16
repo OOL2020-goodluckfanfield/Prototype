@@ -3,25 +3,6 @@
   gather_facts: false
 
   tasks:
-    - name: copy boot file
-      vyos_command:
-        commands:
-          - cat /config/config.boot
-      register: result
-
-    - name: save to file
-      copy:
-        content: "{{ result.stdout[0] }}"
-        dest: "backupfile/tmp"
-
-          #- hosts: localhost
-          #  gather_facts: false
-
-          #  tasks:
-          #    - name: rename
-          #      command:
-          #        sh script/rename.sh
-
-          #    - name: upload
-          #      command:
-          #        sh script/upload.sh
+    - name: backup file
+      vyos_config:
+        backup: yes

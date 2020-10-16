@@ -3,25 +3,6 @@
   gather_facts: false
 
   tasks:
-    - name: copy
-      command:
-        cat backupfile/config.boot
-      register:
-        result
-
-    - name: test
-      command:
-        echo "{{result.stdout}}"
-
-    - name: set boot file
-      copy:
-        content: "{{result.stdout}}"
-        dest: /home/vyos/config
-      #      vyos_command:
-      # commands:
-          #echo "{{result.stdout[]}}" > /home/vyos/config.boot
-          #    - name: change permission
-          #vyos_command:
-          #commands:
-          #chmod 755 config.boot
-
+    - name: restore configuration
+      vyos_config:
+        src: backup/vyos1_config.2020-10-16@20:30:14
