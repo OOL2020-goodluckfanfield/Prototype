@@ -1,5 +1,4 @@
 ---
 ansible_network_os: vyos                  # ネットワークOS
 ansible_connection: network_cli           # 接続方式
-ansible_user: vyos                        # ユーザー名
-ansible_private_key_file: ~/.ssh/yoshida2 # 秘密鍵へのパス
+ansible_ssh_user: vyos                    # ユーザー名

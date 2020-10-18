@@ -5,4 +5,4 @@
   tasks:
     - name: restore configuration
       vyos_config:
-        src: backup/vyos1_config.2020-10-16@20:30:14
+        src: backup/vyos1_config.2020-10-18@09:42:40
